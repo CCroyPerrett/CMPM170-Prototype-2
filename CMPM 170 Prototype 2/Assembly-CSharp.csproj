@@ -53,9 +53,10 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Glasses.cs" />
-    <Compile Include="Assets\Scripts\Platform.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
