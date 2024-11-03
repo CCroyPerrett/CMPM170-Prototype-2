@@ -3,7 +3,10 @@ guid: cfb4874429aeedd4c940df44c3e2222f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - whitelight: {instanceID: 0}
+  - pinklight: {instanceID: 0}
+  - glassesPrefab: {fileID: 3507645073498696696, guid: cdd0f304e8020aa4aadf03cd0cd2f956, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
