@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
     private int currentHealth;
+    private bool invincible;
 
     // Instantiate the PlayerHealth singleton
     void Awake() 
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     void Start() 
     {
         currentHealth = maxHealth;
+        invincible = false;
     }
 
     // Update is called once per frame
@@ -59,7 +61,11 @@ public class PlayerHealth : MonoBehaviour
     // Public method to damage the player
     public void DamagePlayer() 
     {
-        currentHealth -= 1;
+        if(invincible == false)
+        {
+            currentHealth -= 1;
+            StartCoroutine(Invincibility());
+        }
     }
 
     // Public method to heal the player
@@ -72,5 +78,12 @@ public class PlayerHealth : MonoBehaviour
     public void ResetPlayerHealth()
     {
         currentHealth = maxHealth;
+    }
+
+    IEnumerator Invincibility()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(1);
+        invincible = false;
     }
 }

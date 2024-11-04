@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float mouse_sensitivity;
 
     Rigidbody rb;
+    AudioSource jump;
     Vector2 mouse;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        jump = GameObject.Find("Jump").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,14 +27,10 @@ public class Player : MonoBehaviour
         //movement
         if (Input.GetKey(KeyCode.A))
         {
-            //rb.AddTorque(Vector3.left * Time.deltaTime * turnspeed);
-            //rb.angularVelocity = Vector3.left * turnspeed;
             rb.AddForce(-1 * transform.right * Time.deltaTime * movespeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            //rb.AddTorque(-1 * Vector3.left * Time.deltaTime * turnspeed);
-            //rb.angularVelocity = -1 * Vector3.left * turnspeed;
             rb.AddForce(transform.right * Time.deltaTime * movespeed);
         }
         if (Input.GetKey(KeyCode.W))
@@ -47,6 +45,7 @@ public class Player : MonoBehaviour
         //jump
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
+            jump.Play();
             rb.AddForce(new Vector3(0,1,0) * jumpheight);
         }
 
@@ -54,7 +53,6 @@ public class Player : MonoBehaviour
         mouse.x += Input.GetAxis("Mouse X") * mouse_sensitivity;
         mouse.y += Input.GetAxis("Mouse Y") * mouse_sensitivity;
         if(mouse.y > 40) { mouse.y = 40; }if (mouse.y < -40) { mouse.y = -40; }
-        //Debug.Log("mouse x is: " + mouse.x + ", mouse y is: " + mouse.y);
         transform.localRotation = Quaternion.Euler(-mouse.y, mouse.x, 0);
 
 

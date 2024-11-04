@@ -12,6 +12,7 @@ public class Glasses : MonoBehaviour
     [SerializeField] private Image glassesImg;
     [SerializeField] private Sprite defaultGlasses;
     [SerializeField] private Sprite enabledGlasses;
+    AudioSource equip;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Glasses : MonoBehaviour
         whitelight.enabled = true;
         pinklight.enabled = false;
         glassesPrefab.SetActive(false);
+        equip = GameObject.Find("Equip").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Glasses : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            equip.Play();
             if (glasses_on == false)
             {
                 glasses_on = true;

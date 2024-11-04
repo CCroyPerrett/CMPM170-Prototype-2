@@ -6,6 +6,7 @@ public class RagEnemy : MonoBehaviour
 {
     GameObject player;
     Rigidbody rb;
+    AudioSource hurt;
 
     bool frozen;
     public float turnspeed = 2;
@@ -16,6 +17,7 @@ public class RagEnemy : MonoBehaviour
         player = GameObject.Find("Player");
         rb = gameObject.GetComponent<Rigidbody>();
         frozen = true;
+        hurt = gameObject.GetComponent<AudioSource>();
     }
 
 
@@ -58,10 +60,9 @@ public class RagEnemy : MonoBehaviour
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     GameObject child = transform.GetChild(i).gameObject;
-                    //child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
                     child.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 }
-                rb.angularVelocity = new Vector3(0, 0, 0); rb.velocity = new Vector3(0, 0, 0);  //rb.constraints = RigidbodyConstraints.FreezePosition;
+                rb.angularVelocity = new Vector3(0, 0, 0); rb.velocity = new Vector3(0, 0, 0); 
                 frozen = true; rb.useGravity = false;
             }
         }
@@ -72,6 +73,8 @@ public class RagEnemy : MonoBehaviour
     {
         switch (other.gameObject.tag) {
             case "Player":
+                hurt.Play();
+                rb.velocity = new Vector3(0, 0, 0);
                 PlayerHealth.Instance.DamagePlayer();
                 break;
         }
