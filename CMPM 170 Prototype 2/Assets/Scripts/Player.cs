@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         mouse.x += Input.GetAxis("Mouse X") * mouse_sensitivity;
         mouse.y += Input.GetAxis("Mouse Y") * mouse_sensitivity;
         if(mouse.y > 40) { mouse.y = 40; }if (mouse.y < -40) { mouse.y = -40; }
-        Debug.Log("mouse x is: " + mouse.x + ", mouse y is: " + mouse.y);
+        //Debug.Log("mouse x is: " + mouse.x + ", mouse y is: " + mouse.y);
         transform.localRotation = Quaternion.Euler(-mouse.y, mouse.x, 0);
 
 
