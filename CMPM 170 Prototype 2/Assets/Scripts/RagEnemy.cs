@@ -66,4 +66,14 @@ public class RagEnemy : MonoBehaviour
             }
         }
     }
+
+    // Collision detection between enemy and player
+    private void OnCollisionEnter(Collision other) 
+    {
+        switch (other.gameObject.tag) {
+            case "Player":
+                PlayerHealth.Instance.DamagePlayer();
+                break;
+        }
+    }
 }
