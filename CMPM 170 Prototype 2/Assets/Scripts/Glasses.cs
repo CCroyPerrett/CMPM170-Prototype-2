@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Glasses : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Glasses : MonoBehaviour
     public Light whitelight;
     public Light pinklight;
     public GameObject glassesPrefab;
+    [SerializeField] private Image glassesImg;
+    [SerializeField] private Sprite defaultGlasses;
+    [SerializeField] private Sprite enabledGlasses;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,7 @@ public class Glasses : MonoBehaviour
                 whitelight.enabled = false;
                 pinklight.enabled = true;
                 glassesPrefab.SetActive(true);
+                glassesImg.sprite = enabledGlasses;
             }
             else
             {
@@ -36,6 +41,7 @@ public class Glasses : MonoBehaviour
                 whitelight.enabled = true;
                 pinklight.enabled = false;
                 glassesPrefab.SetActive(false);
+                glassesImg.sprite = defaultGlasses;
             }
         }
     }

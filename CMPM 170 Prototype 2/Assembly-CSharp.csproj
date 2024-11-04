@@ -70,6 +70,7 @@
     <Compile Include="Assets/Scripts/KeyBehavior.cs" />
     <Compile Include="Assets/Scripts/Events.cs" />
     <Compile Include="Assets/Scripts/DoorID.cs" />
+    <Compile Include="Assets/Scripts/PlayerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
